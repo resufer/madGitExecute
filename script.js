@@ -39,7 +39,25 @@ let execute = (command) => {
             'node ./fH/fileHandler.js "git commit -m \'some2\'"',
         ];
     } else if (arg === 'example2') {
-        
+        example = [
+            'git init',
+            'node ./fH/fileHandler.js "git init"',
+            'git add .',
+            'git commit -m "initial commit"',
+            'git branch feature1',
+            'git checkout feature1',
+            'node ./fH/fileHandler.js "git checkout feature1"',
+            'git add .',
+            'git commit -m "git commit - checkout feature1"',
+            'node ./fH/fileHandler.js "added feature"',
+            'git add .',
+            'git commit -m "added feature1"',
+            'git checkout master',
+            'node ./fH/fileHandler.js "git checkout master"',
+            'node ./fH/fileHandler.js "update master"',
+            'git add .',
+            'git commit -m "update master"'
+        ];
     } else if (arg === 'example3') {
         
     } else if (arg === 'example4') {
