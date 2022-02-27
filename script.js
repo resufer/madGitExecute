@@ -39,7 +39,7 @@ let execute = (command) => {
             'node ./fH/fileHandler.js "git commit -m \'some2\'"',
         ];
     } else if (arg === 'example2') {
-        example = [
+        example = [ // нужен анализатор, который будет формировать строчку node ./fH/fileHandler.js .....
             'git init',
             'node ./fH/fileHandler.js "git init"',
             'git add .',
@@ -64,7 +64,7 @@ let execute = (command) => {
         
     }
 
-    clearGit();
+    clear();
 
     example.forEach((el, ind) => setTimeout(() => {
         execute(el);
@@ -72,9 +72,12 @@ let execute = (command) => {
 })();
 
 
-function clearGit() {
+function clear() {
     fs.rmSync('./.git', { recursive: true, force: true }, (err) => {
         if(err) console.log(err)
-        else console.log('file deleted successfully');
+    })
+
+    fs.rmSync('./fH/gitData.txt', { recursive: true, force: true }, (err) => {
+        if(err) console.log(err)
     })
 };
