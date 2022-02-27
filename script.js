@@ -1,11 +1,14 @@
 import chalk from 'chalk';
 import { exec } from 'child_process';
+import fs from 'fs';
+
 
 let execute = (command) => {
     exec(command, (err, stdout, stderr) => {
         if (err) {
             (console.log(chalk.italic.hex('#FF2929').underline(`'${command}' - unsuccess \n ${err} \n`)));
-        } else {
+        } 
+        else {
             console.log(chalk.bold.green(`'${command}' - success \n`));
         }
 
@@ -35,9 +38,25 @@ let execute = (command) => {
             'git commit -m "some2"',
             'node ./fH/fileHandler.js "git commit -m \'some2\'"',
         ];
+    } else if (arg === 'example2') {
+        
+    } else if (arg === 'example3') {
+        
+    } else if (arg === 'example4') {
+        
     }
+
+    clearGit();
 
     example.forEach((el, ind) => setTimeout(() => {
         execute(el);
     }, 1500 * ind));
 })();
+
+
+function clearGit() {
+    fs.rmSync('./.git', { recursive: true, force: true }, (err) => {
+        if(err) console.log(err)
+        else console.log('file deleted successfully');
+    })
+};
