@@ -26,20 +26,15 @@ let execute = (command) => {
     } else if (arg === 'example1') {
         example = [
             'git init',
-            'node ./fH/fileHandler.js "git init"',
             'git add .',
             'git commit -m "some"',
-            'node ./fH/fileHandler.js "git commit -m \'some\'"',
             'git branch br2',
-            'node ./fH/fileHandler.js "git branch br2"',
             'git checkout br2',
-            'node ./fH/fileHandler.js "git checkout br2"',
             'git add .',
             'git commit -m "some2"',
-            'node ./fH/fileHandler.js "git commit -m \'some2\'"',
         ];
     } else if (arg === 'example2') {
-        example = [ // нужен анализатор, который будет формировать строчку node ./fH/fileHandler.js .....
+        example = [
             'git init',
             'git add .',
             'git commit -m "initial commit"',
