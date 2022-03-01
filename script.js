@@ -51,12 +51,56 @@ let execute = (command) => {
             'git commit -m "update master"'
         ];
     } else if (arg === 'example3') {
-        
+        example = [
+            'git init',
+            'git add .',
+            'git commit -m "initial commit"',
+
+            'git branch feature1',
+            'git checkout feature1',
+            'git add .',
+            'git commit -m "git commit - checkout feature1"',
+            'git add .',
+            'git commit -m "added feature1"',
+
+            'git checkout master',
+            'git add .',
+            'git commit -m "update master after f1"',
+
+            'git branch feature2',
+            'git checkout feature2',
+            'git add .',
+            'git commit -m "git commit - checkout feature2"',
+            'git add .',
+            'git commit -m "create recursion in feature2"',
+            'git add .',
+            'git commit -m "update recursion in feature2"',
+
+            'git checkout master',
+            'git add .',
+            'git commit -m "update master after f2"',
+
+            'git branch feature3',
+            'git checkout feature3',
+            'git add .',
+            'git commit -m "git commit - checkout feature3"',
+            'git add .',
+            'git commit -m "create b-tree in feature3"',
+            'git add .',
+            'git commit -m "update b-tree in feature3"',
+            'git add .',
+            'git commit -m "complete b-tree in feature3"',
+
+            'git checkout master',
+            'git add .',
+            'git commit -m "update master after f3"'
+        ]
     } else if (arg === 'example4') {
         example = [
             'git init',
             'git add .',
             'git commit -m "initial commit"',
+
             'git branch feature1',
             'git checkout feature1',
             'git add .',
@@ -67,7 +111,7 @@ let execute = (command) => {
             'git branch feature2',
             'git checkout feature2',
             'git add .',
-            'git commit -m "git commit - checkout featur2"',
+            'git commit -m "git commit - checkout feature2"',
             'git add .',
             'git commit -m "create recursion in feature2"',
             'git add .',
@@ -83,6 +127,18 @@ let execute = (command) => {
             'git commit -m "update b-tree in feature3"',
             'git add .',
             'git commit -m "complete b-tree in feature3"',
+
+            'git checkout feature2',
+            'git add .',
+            'git commit -m "return in branch 2"',
+
+            'git checkout feature1',
+            'git add .',
+            'git commit -m "return in branch 1"',
+
+            'git checkout master',
+            'git add .',
+            'git commit -m "update master after f3"'
         ]
     }
 
