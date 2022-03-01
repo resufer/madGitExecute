@@ -38,12 +38,14 @@ let execute = (command) => {
             'git init',
             'git add .',
             'git commit -m "initial commit"',
+
             'git branch feature1',
             'git checkout feature1',
             'git add .',
             'git commit -m "git commit - checkout feature1"',
             'git add .',
             'git commit -m "added feature1"',
+
             'git checkout master',
             'git add .',
             'git commit -m "update master"'
@@ -51,7 +53,37 @@ let execute = (command) => {
     } else if (arg === 'example3') {
         
     } else if (arg === 'example4') {
-        
+        example = [
+            'git init',
+            'git add .',
+            'git commit -m "initial commit"',
+            'git branch feature1',
+            'git checkout feature1',
+            'git add .',
+            'git commit -m "git commit - checkout feature1"',
+            'git add .',
+            'git commit -m "added feature1"',
+
+            'git branch feature2',
+            'git checkout feature2',
+            'git add .',
+            'git commit -m "git commit - checkout featur2"',
+            'git add .',
+            'git commit -m "create recursion in feature2"',
+            'git add .',
+            'git commit -m "update recursion in feature2"',
+
+            'git branch feature3',
+            'git checkout feature3',
+            'git add .',
+            'git commit -m "git commit - checkout feature3"',
+            'git add .',
+            'git commit -m "create b-tree in feature3"',
+            'git add .',
+            'git commit -m "update b-tree in feature3"',
+            'git add .',
+            'git commit -m "complete b-tree in feature3"',
+        ]
     }
 
     clear();
