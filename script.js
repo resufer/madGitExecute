@@ -18,7 +18,7 @@ let execute = (command) => {
 };
 
 (() => {
-    let arg = process.argv[2];
+    let [arg, time] = process.argv.slice(2);
     let example;
     if (!arg) {
         console.log('this script requires arguments: example1 | example2 | ... | example10');
@@ -140,13 +140,112 @@ let execute = (command) => {
             'git add .',
             'git commit -m "update master after f3"'
         ]
+    } else if (arg === 'example5') {
+        example = [
+            'git init',
+            'git add .',
+            'git commit -m "initial commit"',
+
+            'git branch feature1',
+            'git checkout feature1',
+            'git add .',
+            'git commit -m "git commit - checkout feature1"',
+            'git add .',
+            'git commit -m "added feature1"',
+
+            'git branch feature2',
+            'git checkout feature2',
+            'git add .',
+            'git commit -m "git commit - checkout feature2"',
+            'git add .',
+            'git commit -m "create recursion in feature2"',
+            'git add .',
+            'git commit -m "update recursion in feature2"',
+
+            'git branch feature3',
+            'git checkout feature3',
+            'git add .',
+            'git commit -m "git commit - checkout feature3"',
+            'git add .',
+            'git commit -m "create b-tree in feature3"',
+            'git add .',
+            'git commit -m "update b-tree in feature3"',
+            'git add .',
+            'git commit -m "complete b-tree in feature3"',
+
+            'git checkout feature2',
+            'git merge feature3',
+
+            'git checkout feature1',
+            'git merge feature2',
+
+            'git checkout master',
+            'git merge feature1',
+            'git add .',
+            'git commit -m "update master after merge all f"',
+        ]
+    }else if (arg === 'example6') {
+        example = [
+            'git init',
+            'git add .',
+            'git commit -m "initial commit"',
+
+            'git branch feature1',
+            'git checkout feature1',
+            'git add .',
+            'git commit -m "git commit - checkout feature1"',
+            'git add .',
+            'git commit -m "added feature1"',
+
+            'git branch feature2',
+            'git checkout feature2',
+            'git add .',
+            'git commit -m "git commit - checkout feature2"',
+            'git add .',
+            'git commit -m "create recursion in feature2"',
+            'git add .',
+            'git commit -m "update recursion in feature2"',
+
+            'git branch feature3',
+            'git checkout feature3',
+            'git add .',
+            'git commit -m "git commit - checkout feature3"',
+            'git add .',
+            'git commit -m "create b-tree in feature3"',
+            'git add .',
+            'git commit -m "update b-tree in feature3"',
+            'git add .',
+            'git commit -m "complete b-tree in feature3"',
+
+            'git checkout feature2',
+            'git add .',
+            'git commit -m "return in branch 2"',
+            'git merge feature3',
+            'git add .',
+            'git commit -m "feature2 merge feature3 with save conflict"',
+
+
+            'git checkout feature1',
+            'git add .',
+            'git commit -m "return in branch 1"',
+            'git merge feature2',
+            'git add .',
+            'git commit -m "feature1 merge feature2 with save conflict"',
+
+            'git checkout master',
+            'git add .',
+            'git commit -m "return in master"',
+            'git merge feature1',
+            'git add .',
+            'git commit -m "master merge feature1 with save conflict"',
+        ]
     }
 
     clear();
 
     log(example).forEach((el, ind) => setTimeout(() => {
         execute(el);
-    }, 1500 * ind));
+    }, (time || 500) * ind));
 })();
 
 
@@ -161,7 +260,8 @@ function log(arr) {
             words.includes('branch') ||
             i + 1 === arr.length ||
             arr[i+1].includes('checkout') || 
-            arr[i+1].includes('branch')
+            arr[i+1].includes('branch') ||
+            arr[i+1].includes('merge')
             ) {
             continue;
         } res.push(`node ./fH/fileHandler.js "${arr[i]}"`);
