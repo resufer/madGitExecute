@@ -41,20 +41,15 @@ let execute = (command) => {
     } else if (arg === 'example2') {
         example = [ // нужен анализатор, который будет формировать строчку node ./fH/fileHandler.js .....
             'git init',
-            'node ./fH/fileHandler.js "git init"',
             'git add .',
             'git commit -m "initial commit"',
             'git branch feature1',
             'git checkout feature1',
-            'node ./fH/fileHandler.js "git checkout feature1"',
             'git add .',
             'git commit -m "git commit - checkout feature1"',
-            'node ./fH/fileHandler.js "added feature"',
             'git add .',
             'git commit -m "added feature1"',
             'git checkout master',
-            'node ./fH/fileHandler.js "git checkout master"',
-            'node ./fH/fileHandler.js "update master"',
             'git add .',
             'git commit -m "update master"'
         ];
@@ -66,10 +61,31 @@ let execute = (command) => {
 
     clear();
 
-    example.forEach((el, ind) => setTimeout(() => {
+    log(example).forEach((el, ind) => setTimeout(() => {
         execute(el);
     }, 1500 * ind));
 })();
+
+
+function log(arr) {
+    let res = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        res.push(arr[i]);
+        let words = arr[i].split(' ');
+        if (
+            words.includes('add') ||
+            words.includes('branch') ||
+            i + 1 === arr.length ||
+            arr[i+1].includes('checkout') || 
+            arr[i+1].includes('branch')
+            ) {
+            continue;
+        } res.push(`node ./fH/fileHandler.js "${arr[i]}"`);
+    }
+
+    return res;
+}
 
 
 function clear() {
