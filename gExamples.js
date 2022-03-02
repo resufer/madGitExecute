@@ -1,4 +1,4 @@
-function gExamples(count = 3) {
+export function gExamples(count = 3) {
     let example = [
         'git init',
         'git add .',
@@ -82,7 +82,7 @@ function gExamples(count = 3) {
     function mergeBranch() {
         let random1 = getRandom();
         if (random1) {
-            let randBranch = getRandom(branches.length);
+            let randBranch = branches[getRandom(branches.length)];
             example.push(...[
                 'git checkout ' + randBranch,
                 'git add .',
@@ -92,22 +92,22 @@ function gExamples(count = 3) {
 
             let random2 = getRandom();
             if (random2) {
-                let randMergeBranch = getRandom(branches.length);
+                let randMergeBranch = branches[getRandom(branches.length)];
                 example.push(...[
                     `git merge ${randMergeBranch}`,
                     'git add .',
                     `git commit -m "${currentBranch} merge ${randMergeBranch} with save conflict"`,
-                ]);
+                ]); branches = branches.filter(el => el !== randMergeBranch);
             } else {
-                let randMergeSubBranch = getRandom(subBranches.length);
+                let randMergeSubBranch = subBranches[getRandom(subBranches.length)];
                 example.push(...[
                     `git merge ${randMergeSubBranch}`,
                     'git add .',
                     `git commit -m "${currentBranch} merge ${randMergeSubBranch} with save conflict"`,
-                ]);
+                ]);    subBranches.filter(el => el !== randMergeSubBranch);
             }
         } else {
-            let randSubBranch = getRandom(subBranches.length);
+            let randSubBranch = subBranches[getRandom(subBranches.length)];
             example.push(...[
                 'git checkout ' + randSubBranch,
                 'git add .',
@@ -117,23 +117,26 @@ function gExamples(count = 3) {
 
             let random2 = getRandom();
             if (random2) {
-                let randMergeBranch = getRandom(branches.length);
+                let randMergeBranch = branches[getRandom(branches.length)];
                 example.push(...[
                     `git merge ${randMergeBranch}`,
                     'git add .',
                     `git commit -m "${currentBranch} merge ${randMergeBranch} with save conflict"`,
-                ]);
+                ]); branches = branches.filter(el => el !== randMergeBranch);
             } else {
-                let randMergeSubBranch = getRandom(subBranches.length);
+                let randMergeSubBranch = subBranches[getRandom(subBranches.length)];
                 example.push(...[
                     `git merge ${randMergeSubBranch}`,
                     'git add .',
                     `git commit -m "${currentBranch} merge ${randMergeSubBranch} with save conflict"`,
-                ]);
+                ]); subBranches.filter(el => el !== randMergeSubBranch);
             }
         }
-
-        generateBranch();
+        
+        let random3 = getRandom(4);
+        if (random3) {
+            mergeBranch();
+        } else generateBranch(); 
     }
 
 
