@@ -2,14 +2,17 @@ import chalk from 'chalk';
 import { exec } from 'child_process';
 import fs from 'fs';
 
+let meta = {errCount: 0, successCount: 0};
 
 let execute = (command) => {
     exec(command, (err, stdout, stderr) => {
         if (err) {
             (console.log(chalk.italic.hex('#FF2929').underline(`'${command}' - unsuccess \n ${err} \n`)));
+            ++meta.errCount;
         } 
         else {
             console.log(chalk.bold.green(`'${command}' - success \n`));
+            ++meta.successCount;
         }
 
         if (stdout) console.log(chalk.hex('#FAFF3D')(`result command console: ${stdout}`));
@@ -564,8 +567,13 @@ let execute = (command) => {
 
     clear();
 
-    log(example).forEach((el, ind) => setTimeout(() => {
+    log(example).forEach((el, ind, arr) => setTimeout(() => {
         execute(el);
+        if (ind === arr.length - 1) {
+            setTimeout(() => {
+                console.table(meta);
+            }, time * 2);
+        }
     }, (time || 500) * ind));
 })();
 
