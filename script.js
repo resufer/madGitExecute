@@ -544,6 +544,21 @@ let execute = (command) => {
             'git merge f2_sub1',
             'git add .',
             'git commit -m "master merge f2_sub1 with save conflict"',
+            'git merge f2_sub1_subsub2',
+            'git add .',
+            'git commit -m "master merge f2_sub1_subsub2 with save conflict"',
+            'git merge f2_sub1_subsub2_subsubsub1',
+            'git add .',
+            'git commit -m "master merge f2_sub1_subsub2_subsubsub1 with save conflict"',
+            'git merge f1_sub1_subsub1_subsub1',
+            'git add .',
+            'git commit -m "master merge f1_sub1_subsub1_subsub1 with save conflict"',
+            'git merge f1_sub1_subsub1',
+            'git add .',
+            'git commit -m "master merge f1_sub1_subsub1 with save conflict"',
+            'git merge f1_sub1',
+            'git add .',
+            'git commit -m "master merge f1_sub1 with save conflict"',
         ];
     }
 
