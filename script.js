@@ -25,8 +25,8 @@ let execute = (command) => {
     let [arg, time, count] = process.argv.slice(2);
     let example;
     if (!arg) {
-        console.log('this script requires arguments: example1 | example2 | ... | example10 | example, time, count');
-        console.log('10 is absolute');
+        console.log('this script requires arguments: example1 | example2 | ... | example10 | example, [time, [if example count]]');
+        console.log(chalk.bgYellowBright.hex('#0C0874').bold('Warn! 10 is absolute'));
         return;
     } else if (arg === 'example1') {
         example = [
