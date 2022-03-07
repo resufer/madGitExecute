@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import { exec } from 'child_process';
 import fs from 'fs';
+import { gExamples } from './gExamples.js';
 
 let meta = {errCount: 0, successCount: 0};
 
@@ -563,6 +564,8 @@ let execute = (command) => {
             'git add .',
             'git commit -m "master merge f1_sub1 with save conflict"',
         ];
+    } else if (arg === 'example9') {
+        example = gExamples(10);
     }
 
     clear();
