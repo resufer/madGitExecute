@@ -1,4 +1,4 @@
-export function gExamples(count = 3) {
+export function gExamples(count = 3, option = false) {
     let example = [
         'git init',
         'git add .',
@@ -134,7 +134,7 @@ export function gExamples(count = 3) {
         }
         
         let random3 = getRandom(4);
-        if (random3) {
+        if (random3 || (option && branches.length > 2 && subBranches.length > 2)) {
             mergeBranch();
         } else generateBranch(); 
     }
@@ -143,6 +143,6 @@ export function gExamples(count = 3) {
     function getRandom(r = 1) {
         return Math.round(Math.random() * r);
     }
-
+    
     return example;
 }
