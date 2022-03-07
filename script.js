@@ -26,6 +26,7 @@ let execute = (command) => {
     let example;
     if (!arg) {
         console.log('this script requires arguments: example1 | example2 | ... | example10');
+        console.log('10 is absolute');
         return;
     } else if (arg === 'example1') {
         example = [
@@ -566,6 +567,8 @@ let execute = (command) => {
         ];
     } else if (arg === 'example9') {
         example = gExamples(10);
+    } else if (arg === 'example10') {
+        example = gExamples(20, true);
     }
 
     clear();
