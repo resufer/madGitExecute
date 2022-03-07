@@ -22,10 +22,10 @@ let execute = (command) => {
 };
 
 (() => {
-    let [arg, time] = process.argv.slice(2);
+    let [arg, time, count] = process.argv.slice(2);
     let example;
     if (!arg) {
-        console.log('this script requires arguments: example1 | example2 | ... | example10');
+        console.log('this script requires arguments: example1 | example2 | ... | example10 | example, time, count');
         console.log('10 is absolute');
         return;
     } else if (arg === 'example1') {
@@ -227,8 +227,6 @@ let execute = (command) => {
             'git commit -m "return in branch 2"',
             'git merge feature3',
             'git add .',
-            'git commit -m "feature2 merge feature3 with save conflict"',
-
 
             'git checkout feature1',
             'git add .',
@@ -568,7 +566,9 @@ let execute = (command) => {
     } else if (arg === 'example9') {
         example = gExamples(10);
     } else if (arg === 'example10') {
-        example = gExamples(20, true);
+        example = gExamples(100, true);
+    } else if (arg === 'example') {
+        example = gExamples(count, true)
     }
 
     clear();
